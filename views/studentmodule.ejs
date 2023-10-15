@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studnt Module</title>
+</head>
+<body>
+    <h1>Welcome, <%= username %></h1>
+    <ul>
+        <li><a href="/studentmodule">Home</a></li>
+        <!-- Other navigation links -->
+        <% if (username) { %>
+            <li>
+                <form action="/logout" method="post">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+            <% } else { %>
+                <li><a href="/studentlogin">Login</a></li>
+                <%
+            }
+            %>
+    </ul>
+</body>
+</html>
