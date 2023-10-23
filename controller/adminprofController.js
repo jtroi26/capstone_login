@@ -45,13 +45,16 @@ exports.postadminprof = [limiter, (req, res) => {
                 return res.send('Database error');
             } else {
                 if (results.length > 0) {
-                    req.session.profusername = username;
+                    const first_name = results[0].first_name; // Assuming first_name is unique
+                    req.session.proffirst_name = first_name; // Set first_name in the session
+                    req.session.username = username; // Set username in the session
+                    req.session.password = password;
                     req.session.loginAttempts = 0; // Reset login attempts on successful login
                     return res.redirect('/prof');
                 } else {
                     // Increment login attempts counter
                     req.session.loginAttempts++;
-                    return res.render('adminprof', { error: 'Invalid username or password.' });
+                    return res.render('adminprof', { error: 'Invalid username or password for professor.' });
                 }
             }
         });

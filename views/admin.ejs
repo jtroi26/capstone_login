@@ -40,7 +40,7 @@
 
 
     <form action="/update-password" method="POST">
-        <h1>Update password</h1>
+        <h1>Teacher Update password</h1>
         <label for="teacher_id">Select Teacher:</label>
         <select name="teacher_id" id="teacher_id" required>
           <% teacher.forEach(teacherData => { %>
@@ -54,6 +54,22 @@
         <button type="submit">Update Password</button>
       </form>
 
+      <form action="/student_update-password" method="POST">
+        <h1>Student Update password</h1>
+        <label for="student_id">Select Student:</label>
+        <select name="student_id" id="student_id" required>
+          <% student.forEach(studentData => { %>
+            <option value="<%= studentData %>"><%= studentData %></option>
+          <% }); %>
+        </select>
+      
+        <label for="password">New Password:</label>
+        <input type="password" name="password" id="password" required>
+      
+        <button type="submit">Update Password</button>
+      </form>
+
+    <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/profaccounts">View Prof Account</a></button>
     <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/addsubject">Add Subject</a></button>
     <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/addprof_to_subject">Assign Professor</a></button>
     <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/student">Add Student</a></button>

@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
 });
 exports.getprof = async (req, res) => {
     // Render the 'adminprof' template and pass the username from the session
-    res.render('prof', { username: req.session.profusername });
+    res.render('prof', { first_name: req.session.proffirst_name, username: req.session.username });
 
 
     }

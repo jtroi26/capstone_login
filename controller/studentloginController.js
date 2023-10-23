@@ -40,13 +40,16 @@ exports.poststudentlogin = [limiter, (req, res) => {
                     res.send('Database error');
                 } else {
                     if (results.length > 0) {
+                        const first_name = results[0].first_name; // Assuming first_name is unique
+                        req.session.studentfirst_name = first_name; // Set first_name in the session
                         req.session.studentusername = username;
+                        req.session.studentpassword = password;
                         req.session.studentloginAttempts = 0; // Reset login attempts on successful login
                         res.redirect('/studentmodule');
                     } else {
                         // Increment login attempts counter
                         req.session.studentloginAttempts++;
-                        return res.render('studentlogin', { error: 'Invalid username or password.' });
+                        return res.render('studentlogin', { error: 'Invalid username or password for student.' });
                     }
                 }
             });

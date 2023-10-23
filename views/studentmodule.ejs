@@ -6,7 +6,7 @@
     <title>Studnt Module</title>
 </head>
 <body>
-    <h1>Welcome, <%= username %></h1>
+    <h1>Welcome,  <%= first_name %> </h1>
     <ul>
         <li><a href="/studentmodule">Home</a></li>
         <!-- Other navigation links -->
@@ -21,6 +21,25 @@
                 <%
             }
             %>
+
+            <% if (error) { %>
+                <p class="error"><%= error %></p>
+            <% } %>
+
+        <% if (username) { %>
+
+            <h1>username: <%= username %> </h1>
+            <h1>password: <%= password %> </h1>
+            <form action="/forget_password" method="post">
+                <input type="text" name="username" value="<%= username %>" readonly><br>
+                <input type="password" name="oldPassword" placeholder="Old Password" required><br>
+                <input type="password" name="newPassword" placeholder="New Password" required><br>
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" required><br>
+                <button type="submit">Reset Password</button>
+              </form>
+            <%
+        }
+        %>
     </ul>
 </body>
 </html>
